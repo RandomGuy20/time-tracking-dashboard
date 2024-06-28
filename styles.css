@@ -1,0 +1,292 @@
+
+
+:root
+{
+    --main-blue:hsl(246,80%,60%);
+
+
+    --nuetral-very-dark-blue:hsl(226,43%,10%);
+    --nuetral-dark-blue:hsl(235,46%,20%);
+    --nuetral-desaturated-blue:hsl(235,45%,61%);
+    --nuetral-pale-blue:hsl(236,100%,87%);
+
+    --main-font:18px;
+
+    --small-weight:300;
+    --medium-weight:400;
+    --large-weight:500;
+}
+
+*
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+
+}
+
+body
+{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--nuetral-very-dark-blue);
+}
+
+
+.container
+{
+    /* display: flex; */
+    /* justify-content: space-evenly; */
+
+    display: grid;
+    grid-template-columns: 33% 67%;
+
+
+    width: 800px;
+    height: 400px;
+}
+
+
+/* #region Global classes */
+
+.card
+{
+    display: flex;
+    flex-direction: column;
+    border-radius: 50px;
+}
+
+.background
+{
+    background-color: var(--nuetral-desaturated-blue);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly
+}
+
+.foreground
+{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--nuetral-dark-blue);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+
+.large-font
+{
+    font-size: 32px;
+}
+
+
+/* #endregion */
+
+/* #region Main Card */
+
+.main-card 
+{
+    position: relative;
+    display: flex;
+
+    grid-column: 1;
+    grid-row: 1/3;
+
+}
+
+.main-card img
+{
+    height: 60px;
+    width: 60px;
+}
+
+.main-card .background
+{
+    flex: 3;
+}
+
+
+.main-card p
+{
+    color: white;
+}
+
+
+
+
+
+
+
+
+.main-card .foreground
+{
+    flex: 1;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+.time-btn
+{
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--main-blue);
+    margin-left: 1rem;
+}
+
+.active-time
+{
+    color: white;
+    font-weight: var(--large-weight);
+}
+
+
+
+/* #endregion  */
+
+
+
+/* #region Data-cards Grid*/
+
+.data-cards
+{
+    /* display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px; */
+
+    grid-column: 2;
+    grid-row: 1/3;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+
+    /* grid-gap: 20px; */
+    /* justify-content: space-around; */
+}
+
+.data-card
+{
+    /* width: 90%;
+    height: 90%; */
+    /* width: 100%;
+    height: 100%; */
+
+
+    /* display: flex;
+    flex-direction: column;
+    border-radius: 20px; /* Example border radius */
+    /* overflow: hidden;   */
+
+
+    /* border-radius: 20px;
+    overflow: hidden; */
+
+    position: relative;
+    width: 30%;
+    height: 45%;
+}
+
+.data-card .background
+{
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+    /* height: 100%;
+    width: 100%; */
+    /* flex: 3;
+    z-index: 0; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 80%;
+    width: 100%;
+    z-index: 0;
+}
+
+.data-card .background img
+{
+
+}
+
+.data-card .foreground
+{
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+    /* height: 100%;
+    width: 100%; */
+    /* flex: 10; */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 80%;
+    width: 100%;
+    z-index: 1;
+
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+
+    visibility: visible;
+}
+
+
+
+.btn
+{
+    height: 100%;
+    /* opacity: 0;  */
+    position: relative;
+    background-color: inherit;
+    border: none;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn:hover
+{
+    cursor: pointer;
+}
+
+.btn-top-section
+{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 10px;
+}
+
+
+.label
+{
+    color: white;
+    font-size: 16px;
+    font-weight: var(--large-weight);
+}
+
+.dots
+{
+    color: white;
+    font-size: var(--main-font);
+    font-weight: 14px;
+
+}
+
+
+.btn-btm-section
+{
+    flex: 3;
+}
+
+/*#endregion */
