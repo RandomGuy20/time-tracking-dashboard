@@ -35,7 +35,7 @@ const backGroundColors =
 
 const dataValues = [];
 
-
+// GEt data from .json File
 const getData = fetch('./data.json')
                      .then(response => response.json())
                      .then(data => //{dataValues.push(...data)});
@@ -47,6 +47,8 @@ const getData = fetch('./data.json')
                                 });
                         });
 
+                        
+//Set data after grabbing d8ata, make a loading waiting page during this probably
 setTimeout(() => 
 {
     console.log(dataValues.length)
@@ -58,10 +60,6 @@ setTimeout(() =>
     
             cardLabel.textContent = dataValues[index].title;
         }
-
-
-
-
 
 }, 100);
 
