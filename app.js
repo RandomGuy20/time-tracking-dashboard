@@ -35,6 +35,16 @@ const backGroundColors =
 
 const dataValues = [];
 
+const timeButton = document.querySelectorAll(".time-btn");
+
+const priorTimeValues =["Yesterday - ", "Last Week - ", "Last Month - "];
+
+const typeBUttons = document.querySelectorAll(".btn");
+
+
+
+let systemStarted = false;
+
 // GEt data from .json File
 const getData = fetch('./data.json')
                      .then(response => response.json())
@@ -42,7 +52,7 @@ const getData = fetch('./data.json')
                         {
                             data.forEach(element => 
                                 {
-                                    // console.log(element)
+                                   // console.log(element)
                                     dataValues.push(element);
                                 });
                         });
@@ -54,14 +64,17 @@ setTimeout(() =>
     console.log(dataValues.length)
     for (let index = 0; index < dataValues.length; index++) 
         {
-        
-            console.log("In Diata Values " + dataValues[index].title);
             const cardLabel = dataCard[index].querySelector(".label");
-    
+            const mainHours = dataCard[index].querySelector(".current-time");
+            const priorHours = dataCard[index].querySelector(".prior-time-label");
             cardLabel.textContent = dataValues[index].title;
+            mainHours.textContent = "";
+            priorHours.textContent = "";
         }
 
-}, 100);
+systemStarted = true;
+
+}, 1000);
 
 
 // Populate image links in the data cards and background colors
@@ -71,18 +84,78 @@ for (let i = 0; i < dataCard.length; i++)
     
     data.style.backgroundColor = backGroundColors[i];
     data.style.backgroundImage = `url(${backGroundImages[i]})` ;
-    data.style.backgroundRepeat = 'no-repeat';
-    data.style.backgroundPosition = 'top right';
-    data.style.backgroundSize = '40px';
+    // data.style.backgroundRepeat = 'no-repeat';
+    // data.style.backgroundPosition = 'top right';
+    // data.style.marginRight = '10px';
+    data.style.backgroundSize = '50px';
 
 }
-
-
-// Populte Card Labels
 
 
 
 
 // Track Selected time buttons
+timeButton.forEach(button => 
+{
+    button.addEventListener("click", () => 
+    {
+        timeButton.forEach(btn => btn.classList.remove("active-time"));
+        button.classList.add("active-time");
+
+        // Get which index has active time, then grab the data from there, also change text to match
+        for (let index = 0; index < timeButton.length; index++) 
+            if(timeButton[index].classList.contains("active-time"))
+                SetCardData(index);
+
+    });
+
+});
+
+
+//Start adding data to the card based on the index
+function SetCardData(buttonIndex)
+{
+    for (let index = 0; index < dataCard.length; index++) 
+    {
+        const mainHours = dataCard[index].querySelector(".current-time");
+        const priorHours = dataCard[index].querySelector(".prior-time-label");
+
+        mainHours.textContent = dataValues[index].timeframes[timeButton[buttonIndex].textContent.toLowerCase()].current + "hrs";
+        priorHours.textContent = priorTimeValues[buttonIndex] + dataValues[index].timeframes[timeButton[buttonIndex].textContent.toLowerCase()].previous + "hrs";
+    }
+}
+
+
 
 //Track Clicked Activity Button
+
+
+function ClickedTypeButton(index,button)
+{
+    console.log("Click index is " + index);
+
+}
+
+
+typeBUttons.forEach((button,index) =>
+{
+    button.addEventListener("click", () =>
+    {
+        //ClickedTypeButton(index);
+
+        if(button.classList.contains("active"))
+        {
+            button.classList.remove("active");
+        }
+        else
+        {
+            typeBUttons.forEach(element => 
+            {
+                element.classList.remove("active");
+            });
+            button.classList.add("active");
+        }
+    });
+
+
+});
